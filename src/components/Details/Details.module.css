@@ -1,0 +1,9 @@
+.item {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.5rem 1rem;
+}
+.description {
+    margin-left: 15px;
+  margin-right: auto;
+}

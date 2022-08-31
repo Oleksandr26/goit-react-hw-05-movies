@@ -1,16 +1,30 @@
+import 'modern-normalize/modern-normalize.css';
+import { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Header } from './Header/Header';
+import { Spinner } from './Loader/Loader';
+
+// import { HomePage } from './HomePage/HomePage';
+// import { MovieDetails } from './MovieDetails/MovieDetails';
+// import { Movies } from './Movie/Movie';
+const HomePage = lazy(() => import('./HomePage/HomePage'));
+const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+const Movies = lazy(() => import('./Movie/Movie'));
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <Header />
+      <Suspense fallback={<Spinner />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:movieId/*" element={<MovieDetails />} />
+        </Routes>
+      </Suspense>
+      <ToastContainer autoClose={3000} hideProgressBar />
     </div>
   );
 };

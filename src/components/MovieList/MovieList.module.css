@@ -1,0 +1,36 @@
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.item {
+  height: 350px;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.title {
+  height: 13%;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.link {
+  text-decoration: none;
+}
+
+.img {
+  width: 100%;
+  border-radius: 5px;
+  transition: 0.3s;
+}

@@ -1,0 +1,14 @@
+.list {
+  display: flex;
+    flex-wrap: wrap;
+}
+.img {
+  width: 150px;
+}
+.item {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-right: 15px;
+  padding-bottom: 24px;
+}
