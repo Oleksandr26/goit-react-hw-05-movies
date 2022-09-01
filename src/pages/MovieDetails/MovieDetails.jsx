@@ -2,11 +2,11 @@ import s from './MovieDetails.module.css';
 
 import { Link, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import { Cast } from 'components/Cast/Cast';
-import { OneMovieDetails } from '../../Details/Details';
+import { OneMovieDetails } from '../../components/Details/Details';
 import { Reviews } from 'components/Reviews/Reviews';
 import { Spinner } from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
-import { fetchDetails } from '../../services/Api';
+import { fetchDetails } from '../../components/services/Api';
 import { useLocation } from 'react-router-dom';
 
 function MovieDetails() {
