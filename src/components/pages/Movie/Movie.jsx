@@ -1,4 +1,4 @@
-import { Searchbar } from '../Searchbar/Searchbar';
+import { Searchbar } from '../../Searchbar/Searchbar';
 import s from './Movie.module.css';
 
 function Movies() {

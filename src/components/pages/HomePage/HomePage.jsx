@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { fetchTrending } from '../services/Api';
-import { MoviesList } from '../MovieList/MovieList';
+import { fetchTrending } from '../../services/Api';
+import { MoviesList } from '../../MovieList/MovieList';
 import { Spinner } from 'components/Loader/Loader';
 import s from './HomePage.module.css';
 

@@ -2,11 +2,11 @@ import s from './MovieDetails.module.css';
 
 import { Link, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import { Cast } from 'components/Cast/Cast';
-import { OneMovieDetails } from '../Details/Details';
+import { OneMovieDetails } from '../../Details/Details';
 import { Reviews } from 'components/Reviews/Reviews';
 import { Spinner } from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
-import { fetchDetails } from '../services/Api';
+import { fetchDetails } from '../../services/Api';
 import { useLocation } from 'react-router-dom';
 
 function MovieDetails() {
@@ -16,15 +16,11 @@ function MovieDetails() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // const id = movieId
-  console.log('movie: ', movie);
-
   useEffect(() => {
     const fetchMoviesByID = async () => {
       setIsLoading(true);
       try {
         const data = await fetchDetails(movieId);
-        console.log('databyID: ', data);
         setMovie(data);
       } catch (error) {
         console.log(error.message);

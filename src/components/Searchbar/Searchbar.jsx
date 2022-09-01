@@ -4,23 +4,24 @@ import { useEffect, useRef, useState } from 'react';
 import { fetchSearch } from '../services/Api';
 import { Spinner } from '../Loader/Loader';
 import { MoviesList } from 'components/MovieList/MovieList';
-import { toast } from 'react-toastify';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export const Searchbar = () => {
-  const [value, setValue] = useState('');
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef(null);
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const query = searchParams.get('query');
 
   useEffect(() => {
     const fetchMoviesByValue = async () => {
       setIsLoading(true);
       try {
-        const data = await fetchSearch(value);
-        if (data.length === 0) {
-          toast.error(`Oops, i dont have this movie, sorry`, {
-            theme: 'colored',
-          });
+        const data = await fetchSearch(query);
+        if (!data.results.length) {
+          navigate('/');
         }
         setMovies(data.results);
       } catch (error) {
@@ -29,16 +30,20 @@ export const Searchbar = () => {
         setIsLoading(false);
       }
     };
-    if (value) {
+    if (query) {
       fetchMoviesByValue();
     }
-  }, [value]);
+  }, [query, navigate]);
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    setValue(inputRef.current.value);
+    const inputValue =
+      inputRef.current.value.trim() !== ''
+        ? { query: inputRef.current.value.trim() }
+        : '';
+    setSearchParams(inputValue);
   };
+  const value = query ? query : '';
 
   return (
     <>
@@ -55,6 +60,7 @@ export const Searchbar = () => {
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
+            defaultValue={value}
           />
         </form>
       </header>
